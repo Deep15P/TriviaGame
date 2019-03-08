@@ -100,7 +100,6 @@ function decrement () {
 
 
     if (timer === -1) {
-        // unansweredCount++;
         stop();
         $("#answerblock").html("<p> Times up! You loose you bum! </p>")
         $("#trivia").hide();
@@ -117,7 +116,6 @@ function scoreboard() {
     
     $("#correctAlert").html("<p> Correct Answers: " + correctAnswerCount + "</p>")
     $("#wrongAnswersAlert").html("<p> Wrong Answers: " + wrongAnswerCount + "</p>")
-    // $("#unansweredAlert").html("<p> Unanswered: " + unansweredCount + "</p>")
     
 }
 
@@ -128,13 +126,14 @@ $(document).on("click",".answer", function(event) {
 
     if (userGuess === true) {
         correctAnswerCount++;
-        userGuess=""
-       
+       scoreboard();
+       console.log(correctAnswerCount);
     }
 
-    else (userGuess === false) 
+    else if (userGuess === false) 
         wrongAnswerCount++;
-        userGuess="";
+        scoreboard();
+        console.log(wrongAnswerCount);
     }
   
 )
