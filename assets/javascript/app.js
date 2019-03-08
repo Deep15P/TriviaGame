@@ -79,6 +79,8 @@ function displayQuestion() {
         for (j = 0; j < questions[i].answerChoices.length; j++) {
             let answers = $("<button>" + questions[i].answerChoices[j] + "<br>");
             answers.attr("data", questions[i].answerChoices[j]).addClass("answer");
+            //attribute for correct answer
+            answers.attr("correct",questions[i].answer);
             console.log(answers)
             $("#trivia").append(answers);
         }
@@ -121,22 +123,26 @@ function scoreboard() {
 
 $(document).on("click",".answer", function(event) {
 
-   let userGuess = $(this).attr("data");
-    console.log(userGuess);
+    let userGuess = $(this).attr("data");
+        console.log("Current User Guess" + userGuess);
+        console.log("Correct Answer" + $(this).attr("correct"));
 
-    if (userGuess === true) {
-        correctAnswerCount++;
-       scoreboard();
-       console.log(correctAnswerCount);
-    }
-
-    else if (userGuess === false) 
-        wrongAnswerCount++;
+        if (userGuess === $(this).attr("correct")) {
+            console.log("User Guess was " + userGuess);
+            
+            correctAnswerCount++;
         scoreboard();
-        console.log(wrongAnswerCount);
-    }
+        console.log(correctAnswerCount);
+        }
+
+        else{
+            console.log("User Guess was " + userGuess);
+            wrongAnswerCount++;
+            scoreboard();
+            console.log("Wrong Answer count:" + wrongAnswerCount);
+        }
   
-)
+
+    });
 
 });
-
