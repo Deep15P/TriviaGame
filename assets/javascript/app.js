@@ -99,7 +99,7 @@ function decrement () {
     timer --;
 
 
-    if (timer === 0) {
+    if (timer === -1) {
         // unansweredCount++;
         stop();
         $("#answerblock").html("<p> Times up! You loose you bum! </p>")
@@ -117,7 +117,7 @@ function scoreboard() {
     
     $("#correctAlert").html("<p> Correct Answers: " + correctAnswerCount + "</p>")
     $("#wrongAnswersAlert").html("<p> Wrong Answers: " + wrongAnswerCount + "</p>")
-    $("#unansweredAlert").html("<p> Unanswered: " + unansweredCount + "</p>")
+    // $("#unansweredAlert").html("<p> Unanswered: " + unansweredCount + "</p>")
     
 }
 
@@ -127,25 +127,17 @@ $(document).on("click",".answer", function(event) {
     console.log(userGuess);
 
     if (userGuess === true) {
-        // stop();
         correctAnswerCount++;
         userGuess=""
-        // let userGuess= $(this).attr("data");
-        // $("#answerblock").html("<p>Great job!</p>");
+       
     }
 
-    else if (userGuess === false) {
+    else (userGuess === false) 
         wrongAnswerCount++;
         userGuess="";
-        // stop();
     }
-
-    
-        // userGuess="";
-        // $("#answerblock").html("<p>Wrong! The correct answer is: " + pick.choice[pick.answer] + "</p>");
-    
-    
-})
+  
+)
 
 });
 
